@@ -5,50 +5,21 @@ import {
   WalletIcon,
 } from "lucide-react";
 
-import { db } from "@/app/_lib/prisma";
-
 import SummaryCard from "./summary-card";
 
 interface SummaryCardsProps {
-  month: string;
+  balance: number;
+  investmentsTotal: number;
+  revenueTotal: number;
+  expensesTotal: number;
 }
 
-const SummaryCards = async ({ month }: SummaryCardsProps) => {
-  const where = {
-    date: {
-      gte: new Date(`2025-${month}-01`),
-      lt: new Date(`2025-${month}-31`),
-    },
-  };
-  const investmentsTotal = Number(
-    (
-      await db.transaction.aggregate({
-        where: { ...where, type: "INVESTMENT" },
-        _sum: { amount: true },
-      })
-    )._sum.amount ?? 0,
-  );
-
-  const revenueTotal = Number(
-    (
-      await db.transaction.aggregate({
-        where: { ...where, type: "DEPOSIT" },
-        _sum: { amount: true },
-      })
-    )._sum.amount ?? 0,
-  );
-
-  const expensesTotal = Number(
-    (
-      await db.transaction.aggregate({
-        where: { ...where, type: "EXPENSE" },
-        _sum: { amount: true },
-      })
-    )._sum.amount ?? 0,
-  );
-
-  const balance = revenueTotal - investmentsTotal - expensesTotal;
-
+const SummaryCards = async ({
+  balance,
+  investmentsTotal,
+  revenueTotal,
+  expensesTotal,
+}: SummaryCardsProps) => {
   return (
     <div className="space-y-6">
       <SummaryCard
@@ -64,7 +35,7 @@ const SummaryCards = async ({ month }: SummaryCardsProps) => {
           icon={
             <PiggyBankIcon
               size={26}
-              className="rounded-md bg-primary/15 p-[6px] text-muted-foreground"
+              className="rounded-md bg-white/15 p-[6px] text-muted-foreground"
             />
           }
           title="Investido"
