@@ -3,6 +3,7 @@ import { isMatch } from "date-fns";
 import { redirect } from "next/navigation";
 
 import { getDashboard } from "../_data/get-dashboard";
+import ExpensesPerCategory from "./_components/expenses-per-category";
 import SummaryCards from "./_components/summary-cards";
 import TimeSelect from "./_components/time-select";
 import TransactionPieChart from "./_components/transactions-pie-chart";
@@ -41,6 +42,9 @@ const HomePage = async ({ searchParams: { month } }: HomePageProps) => {
           <SummaryCards {...dashboard} />
           <div className="grid grid-cols-3 grid-rows-1 gap-6">
             <TransactionPieChart {...dashboard} />
+            <ExpensesPerCategory
+              expensesPerCategory={dashboard.totalExpensePerCategory}
+            />
           </div>
         </div>
       </div>
