@@ -73,41 +73,39 @@ const TransactionPieChart = ({
           </PieChart>
         </ChartContainer>
 
-        <div>
-          <div className="space-y-2">
-            <PercentageItem
-              icon={
-                <TrendingUpIcon
-                  size={26}
-                  className="rounded-md bg-primary/15 p-[6px] text-primary"
-                />
-              }
-              title="Receita"
-              value={typesPercentage[TransactionType.DEPOSIT]}
-            />
+        <div className="space-y-2">
+          <PercentageItem
+            icon={
+              <TrendingUpIcon
+                size={26}
+                className="rounded-md bg-primary/15 p-[6px] text-primary"
+              />
+            }
+            title="Receita"
+            value={typesPercentage[TransactionType.DEPOSIT]}
+          />
 
-            <PercentageItem
-              icon={
-                <TrendingDownIcon
-                  size={26}
-                  className="rounded-md bg-red-500/15 p-[6px] text-muted-foreground text-red-500"
-                />
-              }
-              title="Despesas"
-              value={typesPercentage[TransactionType.EXPENSE]}
-            />
+          <PercentageItem
+            icon={
+              <TrendingDownIcon
+                size={26}
+                className="rounded-md bg-red-500/15 p-[6px] text-muted-foreground text-red-500"
+              />
+            }
+            title="Despesas"
+            value={typesPercentage[TransactionType.EXPENSE]}
+          />
 
-            <PercentageItem
-              icon={
-                <PiggyBankIcon
-                  size={26}
-                  className="rounded-md bg-white/15 p-[6px] text-muted-foreground"
-                />
-              }
-              title="Investido"
-              value={typesPercentage[TransactionType.INVESTMENT]}
-            />
-          </div>
+          <PercentageItem
+            icon={
+              <PiggyBankIcon
+                size={26}
+                className="rounded-md bg-white/15 p-[6px] text-muted-foreground"
+              />
+            }
+            title="Investido"
+            value={typesPercentage[TransactionType.INVESTMENT]}
+          />
         </div>
       </CardContent>
     </Card>
