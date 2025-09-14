@@ -1,3 +1,4 @@
+import { auth } from "@clerk/nextjs/server";
 import { TransactionType } from "@prisma/client";
 
 import { db } from "@/app/_lib/prisma";
@@ -5,7 +6,14 @@ import { db } from "@/app/_lib/prisma";
 import { TotalExpensePerCategory, TransactionPercentagePerType } from "./types";
 
 export const getDashboard = async (month: string) => {
+  const { userId } = await auth();
+
+  if (!userId) {
+    throw new Error("Unauthorized");
+  }
+
   const where = {
+    userId,
     date: {
       gte: new Date(`2025-${month}-01`),
       lt: new Date(`2025-${month}-31`),
@@ -75,10 +83,11 @@ export const getDashboard = async (month: string) => {
     })
   ).map((category) => ({
     category: category.category,
-    totalAmount: Number(category._sum.amount),
-    percentageOfTotal: Math.round(
-      (Number(category._sum.amount) / Number(expensesTotal)) * 100,
-    ),
+    totalAmount: Number(category._sum.amount) || 0,
+    percentageOfTotal:
+      Math.round(
+        (Number(category._sum.amount) / Number(expensesTotal)) * 100,
+      ) || 0,
   }));
 
   const lastTransactions = await db.transaction.findMany({
