@@ -11,6 +11,7 @@ export const getDashboard = async (month: string) => {
       lt: new Date(`2025-${month}-31`),
     },
   };
+
   const investmentsTotal = Number(
     (
       await db.transaction.aggregate({
@@ -80,6 +81,12 @@ export const getDashboard = async (month: string) => {
     ),
   }));
 
+  const lastTransactions = await db.transaction.findMany({
+    where,
+    orderBy: { date: "desc" },
+    take: 10,
+  });
+
   return {
     investmentsTotal,
     revenueTotal,
@@ -87,5 +94,6 @@ export const getDashboard = async (month: string) => {
     balance,
     typesPercentage,
     totalExpensePerCategory,
+    lastTransactions,
   };
 };
