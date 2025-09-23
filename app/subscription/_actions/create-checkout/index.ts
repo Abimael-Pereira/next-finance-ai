@@ -26,6 +26,9 @@ export const createStripeCheckout = async () => {
     mode: "subscription",
     success_url: "http://localhost:3000/",
     cancel_url: "http://localhost:3000/subscription",
+    metadata: {
+      clerk_user_id: userId,
+    },
     subscription_data: {
       metadata: {
         clerk_user_id: userId,
