@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 import { canUserAddTransaction } from "../_data/can-user-add-transaction";
 import { getDashboard } from "../_data/get-dashboard";
+import AiReportButton from "./_components/ai-report-button";
 import ExpensesPerCategory from "./_components/expenses-per-category";
 import LastTransactions from "./_components/last-transactions";
 import SummaryCards from "./_components/summary-cards";
@@ -38,7 +39,10 @@ const HomePage = async ({ searchParams: { month } }: HomePageProps) => {
     <div className="flex h-full flex-col space-y-6 overflow-hidden p-6">
       <div className="flex justify-between">
         <h1 className="text-xl font-bold">Dashboard</h1>
-        <TimeSelect />
+        <div className="flex items-center gap-4">
+          <AiReportButton month={month} />
+          <TimeSelect />
+        </div>
       </div>
       <div className="grid h-full grid-cols-[2fr,1fr] gap-6 overflow-hidden">
         <div className="flex flex-col gap-6 overflow-hidden">
