@@ -48,20 +48,21 @@ const formSchema = z.object({
   }),
   amount: z
     .number({
-      error: "O valor é obrigatório",
+      required_error: "O valor é obrigatório",
+      invalid_type_error: "O valor deve ser um número",
     })
-    .positive({ error: "O valor deve ser positivo" }),
-  type: z.enum(TransactionType, {
-    error: "O tipo é obrigatório",
+    .positive({ message: "O valor deve ser positivo" }),
+  type: z.nativeEnum(TransactionType, {
+    required_error: "O tipo é obrigatório",
   }),
-  category: z.enum(TransactionCategory, {
-    error: "A categoria é obrigatória",
+  category: z.nativeEnum(TransactionCategory, {
+    required_error: "A categoria é obrigatória",
   }),
-  paymentMethod: z.enum(TransactionPaymentMethod, {
-    error: "O método de pagamento é obrigatório",
+  paymentMethod: z.nativeEnum(TransactionPaymentMethod, {
+    required_error: "O método de pagamento é obrigatório",
   }),
   date: z.date({
-    error: "A data é obrigatória",
+    required_error: "A data é obrigatória",
   }),
 });
 
@@ -253,7 +254,6 @@ const UpsertTransactionDialog = ({
                 <FormItem>
                   <FormLabel>Data</FormLabel>
                   <DatePicker value={field.value} onChange={field.onChange} />
-
                   <FormMessage />
                 </FormItem>
               )}

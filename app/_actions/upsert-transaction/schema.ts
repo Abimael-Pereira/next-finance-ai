@@ -10,8 +10,8 @@ export const upsertTransactionSchema = z.object({
     message: "O nome é obrigatório",
   }),
   amount: z.number().positive(),
-  type: z.enum(TransactionType),
-  category: z.enum(TransactionCategory),
-  paymentMethod: z.enum(TransactionPaymentMethod),
+  type: z.nativeEnum(TransactionType),
+  category: z.nativeEnum(TransactionCategory),
+  paymentMethod: z.nativeEnum(TransactionPaymentMethod),
   date: z.date(),
 });
