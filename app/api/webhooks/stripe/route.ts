@@ -49,7 +49,7 @@ export const POST = async (request: Request) => {
       }
 
       try {
-        await clerkClient.users.updateUser(clerkUserId, {
+        await clerkClient().users.updateUser(clerkUserId, {
           privateMetadata: {
             stripeCustomerId: session.customer,
             stripeSubscriptionId: session.subscription,
@@ -83,7 +83,7 @@ export const POST = async (request: Request) => {
       }
 
       try {
-        await clerkClient.users.updateUser(clerkUserId, {
+        await clerkClient().users.updateUser(clerkUserId, {
           privateMetadata: {
             stripeCustomerId: null,
             stripeSubscriptionId: null,

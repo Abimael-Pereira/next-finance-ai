@@ -34,7 +34,7 @@ const HomePage = async ({ searchParams: { month } }: HomePageProps) => {
 
   const dashboard = await getDashboard(month);
   const userCanAddTransaction = await canUserAddTransaction();
-  const user = await clerkClient.users.getUser(userId);
+  const user = await clerkClient().users.getUser(userId);
 
   return (
     <div className="flex h-full flex-col space-y-6 overflow-hidden p-6">

@@ -18,6 +18,7 @@ const TransactionsPage = async () => {
   const userCanAddTransaction = await canUserAddTransaction();
   const transactions = await db.transaction.findMany({
     where: { userId },
+    orderBy: { date: "desc" },
   });
   return (
     <div className="space-y-6 overflow-hidden p-6">

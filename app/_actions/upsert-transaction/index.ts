@@ -23,8 +23,6 @@ interface AddTransactionParams {
 }
 
 export const upsertTransaction = async (params: AddTransactionParams) => {
-  console.log("Params:", params);
-
   upsertTransactionSchema.parse(params);
 
   const { userId } = await auth();
