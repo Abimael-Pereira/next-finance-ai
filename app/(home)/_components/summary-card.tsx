@@ -28,9 +28,11 @@ const SummaryCard = ({
           {title}
         </p>
       </CardHeader>
-      <CardContent className="flex justify-between">
+      <CardContent
+        className={`flex ${size === "large" ? "flex-col gap-4 sm:flex-row sm:items-end sm:justify-between" : "justify-between"}`}
+      >
         <p
-          className={`font-bold ${size === "large" ? "text-4xl" : "text-2xl"}`}
+          className={`font-bold ${size === "large" ? "text-2xl sm:text-3xl md:text-4xl" : "text-lg sm:text-xl md:text-2xl"}`}
         >
           {Intl.NumberFormat("pt-BR", {
             style: "currency",
@@ -39,7 +41,11 @@ const SummaryCard = ({
         </p>
 
         {size === "large" && (
-          <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
+          <div className="w-full sm:w-auto">
+            <AddTransactionButton
+              userCanAddTransaction={userCanAddTransaction}
+            />
+          </div>
         )}
       </CardContent>
     </Card>

@@ -18,6 +18,12 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 };
 
 export default function RootLayout({
@@ -33,9 +39,9 @@ export default function RootLayout({
             baseTheme: dark,
           }}
         >
-          <div className="flex h-full flex-col overflow-hidden">
+          <div className="flex min-h-screen flex-col overflow-hidden">
             <Navbar />
-            {children}
+            <main className="flex-1 overflow-hidden">{children}</main>
             <Toaster />
           </div>
         </ClerkProvider>

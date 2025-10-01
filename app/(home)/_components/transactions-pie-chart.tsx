@@ -54,10 +54,10 @@ const TransactionPieChart = ({
   ];
   return (
     <Card className="flex flex-col">
-      <CardContent className="flex-1">
+      <CardContent className="flex-1 p-4 md:p-6">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-h-[200px] md:max-h-[250px]"
         >
           <PieChart>
             <ChartTooltip
@@ -68,17 +68,18 @@ const TransactionPieChart = ({
               data={chartData}
               dataKey="amount"
               nameKey="type"
-              innerRadius={60}
+              innerRadius={40}
+              className="md:innerRadius-[60]"
             />
           </PieChart>
         </ChartContainer>
 
-        <div className="space-y-2">
+        <div className="mt-4 space-y-2 md:mt-6">
           <PercentageItem
             icon={
               <TrendingUpIcon
-                size={26}
-                className="rounded-md bg-primary/15 p-[6px] text-primary"
+                size={20}
+                className="rounded-md bg-primary/15 p-1 text-primary md:size-[26px] md:p-[6px]"
               />
             }
             title="Receita"
@@ -88,8 +89,8 @@ const TransactionPieChart = ({
           <PercentageItem
             icon={
               <TrendingDownIcon
-                size={26}
-                className="rounded-md bg-red-500/15 p-[6px] text-muted-foreground text-red-500"
+                size={20}
+                className="rounded-md bg-red-500/15 p-1 text-muted-foreground text-red-500 md:size-[26px] md:p-[6px]"
               />
             }
             title="Despesas"
@@ -99,8 +100,8 @@ const TransactionPieChart = ({
           <PercentageItem
             icon={
               <PiggyBankIcon
-                size={26}
-                className="rounded-md bg-white/15 p-[6px] text-muted-foreground"
+                size={20}
+                className="rounded-md bg-white/15 p-1 text-muted-foreground md:size-[26px] md:p-[6px]"
               />
             }
             title="Investido"

@@ -37,32 +37,42 @@ const HomePage = async ({ searchParams: { month } }: HomePageProps) => {
   const user = await clerkClient().users.getUser(userId);
 
   return (
-    <div className="flex h-full flex-col space-y-6 overflow-hidden p-6">
-      <div className="flex justify-between">
-        <h1 className="text-xl font-bold">Dashboard</h1>
-        <div className="flex items-center gap-4">
+    <div className="flex h-full flex-col space-y-4 overflow-hidden p-4 md:space-y-6 md:p-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-xl font-bold md:text-2xl">Dashboard</h1>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+          <TimeSelect />
           <AiReportButton
             month={month}
             hasPremiumPlan={user.publicMetadata.subscriptionPlan === "premium"}
           />
-          <TimeSelect />
         </div>
       </div>
-      <div className="grid h-full grid-cols-[2fr,1fr] gap-6 overflow-hidden">
-        <div className="flex flex-col gap-6 overflow-hidden">
+
+      {/* Layout responsivo: empilhado no mobile, lado a lado no desktop */}
+      <div className="flex flex-1 flex-col gap-4 overflow-hidden md:gap-6 lg:grid lg:grid-cols-[2fr,1fr]">
+        <div className="flex flex-col gap-4 overflow-hidden md:gap-6">
           <SummaryCards
             {...dashboard}
             userCanAddTransaction={userCanAddTransaction}
           />
-          <div className="grid grid-cols-3 grid-rows-1 gap-6">
-            <TransactionPieChart {...dashboard} />
-            <ExpensesPerCategory
-              expensesPerCategory={dashboard.totalExpensePerCategory}
-            />
+
+          {/* Charts responsivos */}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+            <div className="md:col-span-2 lg:col-span-1">
+              <TransactionPieChart {...dashboard} />
+            </div>
+            <div className="md:col-span-2 lg:col-span-2">
+              <ExpensesPerCategory
+                expensesPerCategory={dashboard.totalExpensePerCategory}
+              />
+            </div>
           </div>
         </div>
 
-        <LastTransactions lastTransactions={dashboard.lastTransactions} />
+        <div className="max-h-96 lg:max-h-none">
+          <LastTransactions lastTransactions={dashboard.lastTransactions} />
+        </div>
       </div>
     </div>
   );

@@ -77,5 +77,14 @@ body {
   }
   body {
     @apply h-full bg-background text-foreground;
+    min-height: 100vh;
+    min-height: 100dvh; /* Para suporte em mobile com barra de navegação dinâmica */
+  }
+
+  /* Melhorar a experiência de toque em mobile */
+  @media (max-width: 768px) {
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
   }
 }

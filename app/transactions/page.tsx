@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 import AddTransactionButton from "../_components/add-transaction-button";
 import { DataTable } from "../_components/ui/data-table";
-import { ScrollArea } from "../_components/ui/scroll-area";
+import { ScrollArea, ScrollBar } from "../_components/ui/scroll-area";
 import { canUserAddTransaction } from "../_data/can-user-add-transaction";
 import { db } from "../_lib/prisma";
 import { transactionColumns } from "./_columns";
@@ -21,18 +21,25 @@ const TransactionsPage = async () => {
     orderBy: { date: "desc" },
   });
   return (
-    <div className="space-y-6 overflow-hidden p-6">
-      <div className="flex w-full items-center justify-between">
-        <h1 className="text-xl font-bold">Transações</h1>
-        <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
+    <div className="flex h-full flex-col space-y-4 p-4 md:space-y-6 md:p-6">
+      <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-xl font-bold md:text-2xl">Transações</h1>
+        <div className="w-full sm:w-auto">
+          <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
+        </div>
       </div>
 
-      <ScrollArea className="h-[calc(100vh-200px)]">
-        <DataTable
-          columns={transactionColumns}
-          data={JSON.parse(JSON.stringify(transactions))}
-        />
-      </ScrollArea>
+      <div className="flex-1 overflow-hidden rounded-md border">
+        <ScrollArea className="h-[700px] w-full">
+          <div className="min-w-full">
+            <DataTable
+              columns={transactionColumns}
+              data={JSON.parse(JSON.stringify(transactions))}
+            />
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
+      </div>
     </div>
   );
 };

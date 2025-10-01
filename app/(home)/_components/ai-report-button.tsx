@@ -42,51 +42,67 @@ const AiReportButton = ({ month, hasPremiumPlan }: AiReportButtonProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost">
-          Relatório IA <BotIcon />
+        <Button variant="ghost" className="w-full sm:w-auto">
+          <span>Relatório IA</span>
+          <BotIcon />
         </Button>
       </DialogTrigger>
       {hasPremiumPlan ? (
-        <DialogContent className="max-w-[600px]">
+        <DialogContent className="max-w-[95vw] sm:mx-0 sm:max-w-[600px]">
           <DialogHeader>
-            <DialogTitle>Relatório gerado por IA</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-lg md:text-xl">
+              Relatório gerado por IA
+            </DialogTitle>
+            <DialogDescription className="text-sm">
               Use a IA para gerar um relatório financeiro detalhado com base nas
               suas transações recentes.
             </DialogDescription>
           </DialogHeader>
-          <ScrollArea className="prose max-h-[450px] text-white prose-h3:text-white prose-h4:text-white prose-strong:text-white">
+          <ScrollArea className="prose max-h-[300px] text-white prose-h3:text-white prose-h4:text-white prose-strong:text-white md:max-h-[450px]">
             <Markdown>{report}</Markdown>
           </ScrollArea>
-          <DialogFooter>
+          <DialogFooter className="gap-2 sm:gap-0">
             <DialogClose>
-              <Button variant="ghost">Cancelar</Button>
+              <Button variant="ghost" className="w-full sm:w-auto">
+                Cancelar
+              </Button>
             </DialogClose>
             <Button
               onClick={handleGenerateReportClick}
               disabled={reportLoading}
+              className="w-full sm:w-auto"
             >
               {reportLoading && <Loader2Icon className="animate-spin" />}
-              Gerar relatório
+              <span className="hidden sm:inline">Gerar relatório</span>
+              <span className="sm:hidden">Gerar</span>
             </Button>
           </DialogFooter>
         </DialogContent>
       ) : (
         <>
-          <DialogContent className="max-w-[600px]">
+          <DialogContent className="mx-4 max-w-[95vw] sm:mx-0 sm:max-w-[600px]">
             <DialogHeader>
-              <DialogTitle>Relatório gerado por IA</DialogTitle>
-              <DialogDescription>
+              <DialogTitle className="text-lg md:text-xl">
+                Relatório gerado por IA
+              </DialogTitle>
+              <DialogDescription className="text-sm">
                 Você precisa ser um usuário premium para acessar este recurso.
               </DialogDescription>
             </DialogHeader>
 
-            <DialogFooter>
+            <DialogFooter className="gap-2 sm:gap-0">
               <DialogClose>
-                <Button variant="ghost">Cancelar</Button>
+                <Button variant="ghost" className="w-full sm:w-auto">
+                  Cancelar
+                </Button>
               </DialogClose>
-              <Button asChild>
-                <Link href="/subscription">Assinar plano premium</Link>
+              <Button asChild className="w-full sm:w-auto">
+                <Link href="/subscription">
+                  <span className="hidden sm:inline">
+                    Assinar plano premium
+                  </span>
+                  <span className="sm:hidden">Assinar</span>
+                </Link>
               </Button>
             </DialogFooter>
           </DialogContent>
