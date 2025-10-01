@@ -11,7 +11,6 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)](https://prisma.io/)
 
-[🚀 Ver Demo](#) • [📖 Documentação](#funcionalidades) • [🛠️ Instalação](#instalação)
 
 </div>
 
