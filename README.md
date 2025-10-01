@@ -6,7 +6,8 @@
 
 **Sistema inteligente de controle financeiro pessoal com IA**
 
-[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https:/TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
+[![https:/TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)](https://prisma.io/)
 
@@ -246,25 +247,6 @@ npx prisma studio    # Interface visual do banco
 
 ---
 
-## 🤝 Contribuição
-
-Contribuições são sempre bem-vindas! Para contribuir:
-
-1. **Fork** o projeto
-2. Crie uma **branch** para sua feature (`git checkout -b feature/MinhaFeature`)
-3. **Commit** suas mudanças (`git commit -m 'feat: adiciona nova feature'`)
-4. **Push** para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um **Pull Request**
-
-### � **Guidelines de Contribuição:**
-
-- Siga os padrões de código existentes
-- Escreva commits descritivos
-- Teste suas mudanças localmente
-- Atualize a documentação se necessário
-
----
-
 ## ❓ FAQ
 
 <details>
@@ -310,7 +292,7 @@ Este é um **projeto acadêmico** desenvolvido para demonstrar habilidades em:
 
 ---
 
-## �👨‍💻 Autor
+## 👨‍💻 Autor
 
 **Abimael Pereira**
 
